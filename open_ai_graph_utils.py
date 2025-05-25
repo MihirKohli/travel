@@ -20,22 +20,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
-def test_openai_connection():
-    """Test OpenAI API connection before starting the application"""
-    try:
-        test_llm = ChatOpenAI(
-            model="gpt-4o-mini",
-            api_key=OPENAI_API_KEY,
-            timeout=30,
-            max_retries=3
-        )
-        response = test_llm.invoke([HumanMessage(content="Hello, test connection")])
-        print("✅ OpenAI connection successful")
-        return True
-    except Exception as e:
-        print(f"❌ OpenAI connection failed: {e}")
-        return False
-
 def extract_preferences(user_input: str, max_retries: int = 3) -> Dict[str, Any]:
     """
     Extracts user travel preferences with retry logic and better error handling
@@ -55,7 +39,7 @@ def extract_preferences(user_input: str, max_retries: int = 3) -> Dict[str, Any]
             
             # Parse JSON
             preferences = json.loads(content)
-            print(f"✅ Successfully extracted preferences: {preferences}")
+            print(f"Successfully extracted preferences: {preferences}")
             return preferences
             
         except json.JSONDecodeError as e:
@@ -295,10 +279,6 @@ def final_output_node(state: Dict[str, Any]) -> Dict[str, Any]:
     
     state['output'] = output
     return state
-
-# Test connection on module import
-if not test_openai_connection():
-    print("⚠️  Warning: OpenAI connection test failed. The application may not work correctly.")
 
 # Create the workflow graph
 graph = StateGraph(dict)
