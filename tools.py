@@ -30,7 +30,8 @@ def weather_tool(destination: str) -> str:
     if not OPENWEATHER_API_KEY:
         default = DEFAULT_WEATHER.get(destination)
         if default:
-            return f"Expected weather in {destination} is {default['description']} with average {default['temp']}°C."
+            # return f"Expected weather in {destination} is {default['description']} with average {default['temp']}°C."
+            return ""
         else:
             return f"Weather data for {destination} is currently unavailable."
 
@@ -48,9 +49,10 @@ def weather_tool(destination: str) -> str:
         return f"Expected weather in {destination} is {description} with average {temp}°C."
     except Exception:
         default = DEFAULT_WEATHER.get(destination)
-        if default:
-            return f"Expected weather in {destination} is {default['description']} with average {default['temp']}°C."
-        return f"Could not fetch weather for {destination}."
+        # if default:
+        #     return f"Expected weather in {destination} is {default['description']} with average {default['temp']}°C."
+        # return f"Could not fetch weather for {destination}."
+        return ""
 
 
 
@@ -80,7 +82,8 @@ def attractions_tool(destination: str, interests: list[str]) -> str:
     if not GOOGLE_PLACES_API_KEY:
         default = DEFAULT_ATTRACTIONS.get(destination)
         if default:
-            return f"Top attractions in {destination}: {', '.join(default)}."
+            # return f"Top attractions in {destination}: {', '.join(default)}."
+            return ""
         else:
             return f"Attractions data for {destination} is currently unavailable."
 
@@ -104,8 +107,9 @@ def attractions_tool(destination: str, interests: list[str]) -> str:
 
     if not attractions:
         default = DEFAULT_ATTRACTIONS.get(destination)
-        if default:
-            return f"Top attractions in {destination}: {', '.join(default)}."
-        return f"No attractions found for interests in {destination}."
+        # if default:
+        #     return f"Top attractions in {destination}: {', '.join(default)}."
+        # return f"No attractions found for interests in {destination}."
+        return ""
 
     return f"Top attractions in {destination} for {', '.join(interests)}: {', '.join(attractions)}."
