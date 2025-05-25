@@ -1,0 +1,12 @@
+services:
+  travel-assistant:
+    build: .
+    container_name: travel_itinerary_assistant
+    environment:
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - GOOGLE_PLACES_API_KEY=${GOOGLE_PLACES_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - .:/app
+    ports:
+      - "8006:8006"

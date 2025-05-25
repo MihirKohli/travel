@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+langchain>=0.1.0
+openai
+faiss-cpu
+pydantic
+langchain-openai
+langchain_community
+langgraph

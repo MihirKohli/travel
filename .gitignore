@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python logs
+*.log
+
+# FAISS and other large binary files (optional, if you save vector stores locally)
+destination_docs_faiss/
+destinations_faiss/
+
+# Docker files (optional, if you don't want to commit your Docker images or cache)
+docker-compose.override.yml
